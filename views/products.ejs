@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürün Ekle</title>
+    <link rel="stylesheet" type="text/css" href="/style/urunler.css">
+</head>
+
+<body>
+    <%- include('../pages/nav.ejs') %>
+        <%- include('../pages/side.ejs') %>
+
+            <div class="container">
+                <div class="product-form-container">
+
+                    <div class="product-form">
+                        <form action="/addProduct" method="POST" enctype="multipart/form-data">
+                            <div class="form-input">
+                                <label for="productImage" class="file-label">
+                                    <img src="/assets/addImage.png" alt="Dosya Seç" width="250px">
+                                </label>
+                                <input type="file" name="productImage" id="productImage" accept="image/*" required
+                                    style="display: none;">
+                            </div>
+                            <div class="form-input">
+                                <input type="text" name="productName" placeholder="Ürün Adı" required>
+                            </div>
+                            <div class="form-input">
+                                <textarea name="productDescription" placeholder="Ürün Açıklaması" required></textarea>
+                            </div>
+                            <div class="form-input">
+                                <input type="number" name="productPrice" placeholder="Ürün Fiyatı" required>
+                            </div>
+                            <button type="submit">Ekle</button>
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="product-cards">
+                    <% products.forEach(product=> { %>
+                        <div class="product-card">
+                            <button class="delete-button" onclick="deleteProduct('<%= product._id %>')">X</button>
+
+                            <img id="card-img" src="/uploads/<%= product.productImage %>" alt="Ürün Görseli">
+                            <div class="product-card-info">
+                                <h4><b>
+                                        <%= product.productName %>
+                                    </b></h4>
+                                <p>
+                                    <%= product.productDescription %>
+                                </p>
+                                <p>Fiyat: <%= product.productPrice %> TL</p>
+
+                            </div>
+
+                        </div>
+
+                        <% }); %>
+                </div>
+
+
+            </div>
+
+            <script>
+                async function deleteProduct(productId) {
+                    if (confirm('Bu ürünü silmek istediğinize emin misiniz?')) {
+                        try {
+                            const response = await fetch(`/deleteProduct/${productId}`, {
+                                method: 'DELETE'
+                            });
+
+                            if (response.ok) {
+                                // Sayfayı yenile
+                                window.location.reload();
+                            } else {
+                                console.error('Ürün silinemedi.');
+                            }
+                        } catch (error) {
+                            console.error('Hata:', error);
+                        }
+                    }
+                }
+            </script>
+
+
+</body>
+
+</html>

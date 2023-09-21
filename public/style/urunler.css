@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #8800ff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column; /* Dikey düzende içerik sıralama */
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 100px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+.product-form-container {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin-top: 120px; /* Formun üstündeki boşluğu ayarla */
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.product-form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.form-input {
+    margin-bottom: 15px;
+}
+
+.form-input label {
+    display: block;
+    cursor: pointer;
+}
+
+.form-input img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.form-input input,
+.form-input textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.product-form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.product-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.product-card {
+    position: relative;
+    background-color: #007bff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: calc(33.33% - 20px);
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    width: 100%; /* Resimlerin tam genişlikte görüntülenmesi */
+    max-height: 300px; /* Kartın içindeki resmin maksimum yüksekliği */
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.product-card .product-card-info {
+    background-color: #001f3f;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    overflow: hidden; /* Uzun yazıların taşması durumunda kes */
+
+}
+
+.product-card h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.product-card p {
+    font-size: 14px;
+    margin-bottom: 5px;
+    white-space: normal; /* Uzun yazıların alt satıra geçmesini sağlar */
+
+}
+
+.product-card p:last-child {
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.delete-button {
+    position: absolute;
+    top: -5px;
+    right: -15px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
